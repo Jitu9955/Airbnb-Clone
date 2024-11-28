@@ -1,8 +1,9 @@
 /* eslint-disable react/display-name */
 import { Suspense, lazy } from "react";
-import { Navigate, useRoutes, useLocation, Outlet } from "react-router-dom";
+import { Navigate, useRoutes, useLocation } from "react-router-dom";
 // components
 import LoadingScreen from "../components/LoadingScreen";
+import Mainlayout from "../layout/Main";
 
 // ----------------------------------------------------------------------
 
@@ -25,12 +26,10 @@ export default function Router() {
       path: "/",
       element: (
         <div>
-          <Outlet />
+          <Mainlayout />
         </div>
       ),
-      children: [
-        { element: <HomePage />, index: true }
-      ],
+      children: [{ element: <HomePage />, index: true }],
     },
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);
